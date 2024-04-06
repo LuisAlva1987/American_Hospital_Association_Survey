@@ -14,7 +14,13 @@ Have hospitals' HCAHPS scores improved over the past 9 years?
 ## About Data
 
 The HCAHPS survey data base contains seven tables:
-* Questions -
+* Questions - description 
 * Measures -
-* 
+* Report - 
+* State -
+* Responses -
+* State Results -
+* National Results -
+The following is the entity relation diagram that shows each how these tables relate to each other.
+
 
