@@ -25,4 +25,26 @@ The HCAHPS survey data base contains seven tables:
 The following is the entity relationship diagram that shows each how these tables relate to each other.
 ![image](https://github.com/Luis102487/patients_survey/assets/96627296/4de6a7fd-f3fc-4ab2-bc26-fff8c5d04614)
 
-1. What areas/measures received the worst results in the last released survey?
+1. What areas/measures received the worst results in the last released survey
+   SELECT
+  nr.release_period,
+  r.start_date,
+  r.end_date,
+  m.measure,
+  nr.bottom_box_percentage AS never,
+  nr.middle_box_percentage AS usually,
+  nr.top_box_percentage AS always
+FROM
+  luisalva.hopitals_patients_survey.measures m
+JOIN
+  luisalva.hopitals_patients_survey.national_results nr
+ON
+  m.measure_id = nr.measure_id
+JOIN
+  luisalva.hopitals_patients_survey.reports r
+ON
+  nr.release_period = r.release_period
+WHERE
+  nr.release_period = '07_2023'
+ORDER BY
+  never
