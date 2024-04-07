@@ -25,4 +25,4 @@ The HCAHPS survey data base contains seven tables:
 The following is the entity relationship diagram that shows each how these tables relate to each other.
 ![image](https://github.com/Luis102487/patients_survey/assets/96627296/4de6a7fd-f3fc-4ab2-bc26-fff8c5d04614)
 
-
+1. What areas/measures received the worst results in the last released survey?
