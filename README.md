@@ -14,10 +14,10 @@ Have hospitals' HCAHPS scores improved over the past 9 years?
 ## About Data
 
 The HCAHPS survey data base contains seven tables:
-* Questions - Questions asked to patients in the survey.
-* Measures - Areas measured in the survey.
+* Questions - Questions asked to patients as it appears on the HCAHPS survey.
+* Measures - Hospital areas measured in the HCAHPS survey such as 
 * Report - 
-* State -
+* State - State abbreviation for the 50 US States (plus DC - District of Columbia).
 * Responses - 
 * State Results -
 * National Results -
