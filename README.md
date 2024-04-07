@@ -15,12 +15,12 @@ Have hospitals' HCAHPS scores improved over the past 9 years?
 
 The HCAHPS survey data base contains seven tables:
 * Questions - Questions asked to patients as it appears on the HCAHPS survey.
-* Measures - Hospital areas measured in the HCAHPS survey such as 
-* Report - 
+* Measures - Hospital areas measured in the survey such as 'Communication with Nurses' and 'Responsiveness of Hospital Staff'.
+* Report - Survey results released periods.
 * State - State abbreviation for the 50 US States (plus DC - District of Columbia).
-* Responses - 
-* State Results -
-* National Results -
+* Responses - Surveys completed and response rates from patients by facility.
+* State Results - Survey results by state.
+* National Results - Survey results nationally.
 
 The following is the entity relation diagram that shows each how these tables relate to each other.
 ![image](https://github.com/Luis102487/patients_survey/assets/96627296/4de6a7fd-f3fc-4ab2-bc26-fff8c5d04614)
