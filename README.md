@@ -50,5 +50,7 @@ ORDER BY
 ```
 RESULTS 
 ![image](https://github.com/Luis102487/patients_survey/assets/96627296/56f561c4-b874-4f7b-893e-e8d960846063)
+![image](https://github.com/Luis102487/patients_survey/assets/96627296/02d10f6c-7a99-4517-985c-afe376671c00)
+
 
 try some feature engeenering maybe
