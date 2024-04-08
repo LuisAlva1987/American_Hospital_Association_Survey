@@ -32,7 +32,7 @@ The following is the entity relationship diagram that shows each how these table
 
 ```sql
 SELECT
-  m.measure,
+  m.measure AS area_measured,
   nr.bottom_box_percentage AS poor,
   nr.middle_box_percentage AS fair,
   nr.top_box_percentage AS good
