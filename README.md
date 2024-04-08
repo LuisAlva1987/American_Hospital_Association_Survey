@@ -23,7 +23,9 @@ The HCAHPS survey data base contains seven tables:
 The following is the entity relationship diagram that shows each how these tables relate to each other.
 ![image](https://github.com/Luis102487/patients_survey/assets/96627296/cafbad71-56a8-4cae-9699-bc5200255998)
 
-## Explore]ing the Data
+## Exploring the Data
+* How many areas are measured in the survey
+* How many years of survey are available in the data
 
 ## Questions to Answer
 
