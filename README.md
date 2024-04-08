@@ -28,7 +28,7 @@ The following is the entity relationship diagram that shows each how these table
 
 ## Questions to Explore
 
-1. What areas/measures received the worst rates in the latest released survey?
+1. What areas/measures received the worst rates in the latest released survey nationally?
 
 ```sql
 SELECT
