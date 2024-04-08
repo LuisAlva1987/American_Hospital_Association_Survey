@@ -32,6 +32,7 @@ The following is the entity relationship diagram that shows each how these table
 1. What areas/measures received the worst rates in the latest released survey nationally?
 
 ```sql
+
 SELECT
   m.measure AS area_measured,
   nr.bottom_box_percentage AS poor,
@@ -51,7 +52,9 @@ WHERE
   nr.release_period = '07_2023'
 ORDER BY
   poor DESC;
+
 ```
+
 RESULTS 
 ![image](https://github.com/Luis102487/patients_survey/assets/96627296/56f561c4-b874-4f7b-893e-e8d960846063)
 
