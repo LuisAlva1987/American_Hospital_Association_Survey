@@ -27,14 +27,11 @@ The following is the entity relationship diagram that shows each how these table
 
 1. What areas/measures received the worst results in the last released survey
 
-   SELECT
-  nr.release_period,
-  r.start_date,
-  r.end_date,
+SELECT
   m.measure,
-  nr.bottom_box_percentage AS never,
-  nr.middle_box_percentage AS usually,
-  nr.top_box_percentage AS always
+  nr.bottom_box_percentage AS poor,
+  nr.middle_box_percentage AS fair,
+  nr.top_box_percentage AS good
 FROM
   luisalva.hopitals_patients_survey.measures m
 JOIN
@@ -48,7 +45,7 @@ ON
 WHERE
   nr.release_period = '07_2023'
 ORDER BY
-  never
+  poor DESC;
 
 
 try some feature engeenering maybe
