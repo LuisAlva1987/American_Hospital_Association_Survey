@@ -25,8 +25,10 @@ The following is the entity relationship diagram that shows each how these table
 
 
 ## Exploring the Data
-* How many areas are measured in the survey
-* How many years of survey are available in the data
+* How many areas are measured in the survey?
+* How many years of survey are available in the data?
+* How is the survey measuring results?
+* How many hospitals are measured in the survey?
 
 ## Questions to Answer
 
