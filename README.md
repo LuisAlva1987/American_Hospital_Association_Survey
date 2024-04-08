@@ -26,6 +26,7 @@ The following is the entity relationship diagram that shows each how these table
 ![image](https://github.com/Luis102487/patients_survey/assets/96627296/4de6a7fd-f3fc-4ab2-bc26-fff8c5d04614)
 
 1. What areas/measures received the worst results in the last released survey
+
    SELECT
   nr.release_period,
   r.start_date,
@@ -48,3 +49,6 @@ WHERE
   nr.release_period = '07_2023'
 ORDER BY
   never
+
+
+try some feature engeenering maybe
