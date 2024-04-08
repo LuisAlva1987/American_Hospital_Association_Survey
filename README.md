@@ -56,7 +56,7 @@ ORDER BY
 ```
 
 RESULTS 
-![image](https://github.com/Luis102487/patients_survey/assets/96627296/56f561c4-b874-4f7b-893e-e8d960846063)
+![image](https://github.com/Luis102487/patients_survey/assets/96627296/cafbad71-56a8-4cae-9699-bc5200255998)
 
 
 'Communication about Medicines' measure/area received the highest rate with a 20% of participants surveyed stating that manage of this area was poor. Followed by Discharge Information at a 14%; surprisingly this measure also received the highest good rating of all the areas measured in the latest survey. This show that for this specific measure there was not middle ground participants in the survey either like it or disliked the management of 'Discharge Information'
