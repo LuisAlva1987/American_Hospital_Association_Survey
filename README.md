@@ -26,6 +26,15 @@ The following is the entity relationship diagram that shows each how these table
 
 ## Exploring the Data
 * How many areas are measured in the survey?
+  ```sql
+  SELECT
+    DISTINCT measure AS area_measured
+  FROM
+    luisalva.hopitals_patients_survey.measures
+  ```
+  ![image](https://github.com/Luis102487/patients_survey/assets/96627296/05c46672-8d8f-4408-9ea6-3506889bcc7b)
+> There are ten areas measured in the survey.
+
 * How many years of survey are available in the data?
 * How is the survey measuring results?
 * How many hospitals are measured in the survey?
