@@ -3,7 +3,7 @@
 American Hospital Association (AHA) is a national organization that represents hospitals and their patients, and acts as a source of information on health care issues and trends. Each year AHA produces the Hospital Consumer Assessment of Healthcare Providers and Systems (HCAHPS) survey. The intent of the HCAHPS initiative is to provide a standardized survey instrument for measuring patients’ perspectives on hospital care in order to create incentives for hospitals to improve their quality of care. 
 The purpose of this analysis is to analyze the results for the last 9 years aiming to answer the following questions:
 Have hospitals' HCAHPS scores improved over the past 9 years?
-1. What areas measured received the worst results in the lastest released survey? What areas the best results?
+1. What areas measured received the worst results in the lastest released survey? What areas received the best results?
 2. Are there any specific areas where hospitals have made more progress than others?
 3. Are there any major areas of opportunity remaining?
 4. What recommendations can you make to hospitals to help them further improve the patient experience?
@@ -32,11 +32,12 @@ The following is the entity relationship diagram that shows each how these table
 
 ## Questions to Answer
 
-1. What areas/measures received the worst rates in the latest released survey nationally?
+1. What areas measured received the worst results in the lastest released survey? What areas received the best results?
 
 ```sql
 
 SELECT
+  nr.release_period,
   m.measure AS area_measured,
   nr.bottom_box_percentage AS poor,
   nr.middle_box_percentage AS fair,
@@ -54,13 +55,12 @@ ON
 WHERE
   nr.release_period = '07_2023'
 ORDER BY
-  poor DESC;
+  nr.release_period;
 
 ```
 
 RESULTS 
-![image](https://github.com/Luis102487/patients_survey/assets/96627296/cafbad71-56a8-4cae-9699-bc5200255998)
-
+![image](https://github.com/Luis102487/patients_survey/assets/96627296/47c269da-d1a5-444f-bb0e-839db084606c)
 
 > 'Communication about Medicines' measure/area received the highest rate with a 20% of participants surveyed stating that manage of this area was poor. Followed by Discharge Information at a 14%; surprisingly this measure also received the highest good rating of all the areas measured in the latest survey. This show that for this specific measure there was not middle ground participants in the survey either like it or disliked the management of 'Discharge Information'
 
