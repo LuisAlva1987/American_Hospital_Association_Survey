@@ -1,4 +1,4 @@
-# American Hospital Association Sirveys Data Analysis
+# American Hospital Association Survey Data Analysis
 
 American Hospital Association (AHA) is a national organization that represents hospitals and their patients, and acts as a source of information on health care issues and trends. Each year AHA produces the Hospital Consumer Assessment of Healthcare Providers and Systems (HCAHPS) survey. The intent of the HCAHPS initiative is to provide a standardized survey instrument for measuring patients’ perspectives on hospital care in order to create incentives for hospitals to improve their quality of care. 
 The purpose of this analysis is to analyze the results for the last 9 years aiming to answer the following questions:
@@ -23,8 +23,9 @@ The HCAHPS survey data base contains seven tables:
 The following is the entity relationship diagram that shows each how these tables relate to each other.
 ![image](https://github.com/Luis102487/patients_survey/assets/96627296/cafbad71-56a8-4cae-9699-bc5200255998)
 
+## Explore]ing the Data
 
-## Questions to Explore
+## Questions to Answer
 
 1. What areas/measures received the worst rates in the latest released survey nationally?
 
