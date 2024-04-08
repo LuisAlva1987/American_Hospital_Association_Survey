@@ -27,6 +27,7 @@ The following is the entity relationship diagram that shows each how these table
 
 1. What areas/measures received the worst results in the last released survey
 
+```sql
 SELECT
   m.measure,
   nr.bottom_box_percentage AS poor,
@@ -46,6 +47,6 @@ WHERE
   nr.release_period = '07_2023'
 ORDER BY
   poor DESC;
-
+```
 
 try some feature engeenering maybe
