@@ -37,6 +37,20 @@ The following is the entity relationship diagram that shows each how these table
 > There are ten areas measured in the survey.
 
 * How many years of survey are available in the data?
+  ```sql
+  SELECT
+    DISTINCT release_period,
+    start_date,
+    end_date
+  FROM
+    luisalva.hopitals_patients_survey.reports
+  ORDER BY
+    release_period;
+  ```
+  ![image](https://github.com/Luis102487/American-Hospital-Association-Survey/assets/96627296/15a395d2-f850-456c-a500-5c059cc9748d)
+
+> There are 9 years of survey available in the survey starting in 2013 until 2022.
+  
 * How is the survey measuring results?
 * How many hospitals are measured in the survey?
 * all areas received an average of ##% poor rating which is good to start with. 
