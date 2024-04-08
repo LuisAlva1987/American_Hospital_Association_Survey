@@ -29,6 +29,7 @@ The following is the entity relationship diagram that shows each how these table
 * How many years of survey are available in the data?
 * How is the survey measuring results?
 * How many hospitals are measured in the survey?
+* all areas received an average of ##% poor rating which is good to start with. 
 
 ## Questions to Answer
 
@@ -62,6 +63,7 @@ ORDER BY
 RESULTS 
 ![image](https://github.com/Luis102487/patients_survey/assets/96627296/47c269da-d1a5-444f-bb0e-839db084606c)
 
-> 'Communication about Medicines' measure/area received the highest rate with a 20% of participants surveyed stating that manage of this area was poor. Followed by Discharge Information at a 14%; surprisingly this measure also received the highest good rating of all the areas measured in the latest survey. This show that for this specific measure there was not middle ground participants in the survey either like it or disliked the management of 'Discharge Information'
+> According to the survey hospitals struggle in the area of 'Communication about Medicines' but excel at 'Discharge Information'
+> 'Communication about Medicines' area measured received the highest poor rate with a 20% of participants surveyed stating that manage of this area was poor. Followed by 'Discharge Information' at a 14%; surprisingly this measure also received the highest good rating of all the areas measured in the latest survey. This show that for this specific measure there was not middle ground participants in the survey either like it or disliked the management of 'Discharge Information'
 
 try some feature engeenering maybe
