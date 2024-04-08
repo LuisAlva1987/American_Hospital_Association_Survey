@@ -64,6 +64,6 @@ RESULTS
 ![image](https://github.com/Luis102487/patients_survey/assets/96627296/47c269da-d1a5-444f-bb0e-839db084606c)
 
 > According to the survey hospitals struggle in the area of 'Communication about Medicines' but excel at 'Discharge Information'
-> 'Communication about Medicines' area measured received the highest poor rate with a 20% of participants surveyed stating that manage of this area was poor. Followed by 'Discharge Information' at a 14%; surprisingly this measure also received the highest good rating of all the areas measured in the latest survey. This show that for this specific measure there was not middle ground participants in the survey either like it or disliked the management of 'Discharge Information'
+> 'Communication about Medicines' area measured received the highest poor rate with a 20% of participants surveyed stating that manage of this area was poor. Followed by 'Discharge Information' at a 14%; surprisingly this measure also received the highest good rating of all the areas measured in the latest survey. This show that for this specific measure there was not middle ground participants in the survey either like it or disliked the management of 'Discharge Information' and a lot of potential for opportunity.
 
 try some feature engeenering maybe
