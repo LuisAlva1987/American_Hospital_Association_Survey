@@ -77,7 +77,6 @@ The following is the entity relationship diagram that shows each how these table
 5. What areas measured received the worst and best results in the lastest released survey nationally? 
 
 ```sql
-
 SELECT
   *
 FROM
@@ -88,14 +87,13 @@ FROM
   luisalva.hopitals_patients_survey.questions
 SELECT
   state,
-  ROUND(AVG(response_rate AS int), 2) AS response_rate
+  ROUND(AVG(response_rate), 2) AS response_rate
 FROM
   luisalva.hopitals_patients_survey.responses
 GROUP BY
   state
 ORDER BY
   response_rate DESC;
-
 ```
 
 1. What areas measured received the worst and best results in the lastest released survey nationally? 
