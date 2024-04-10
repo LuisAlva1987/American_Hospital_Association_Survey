@@ -33,7 +33,7 @@ The following is the entity relationship diagram that shows each how these table
 ![image](https://github.com/Luis102487/patients_survey/assets/96627296/6e144772-3720-447c-b3c3-f3843e1b98da)
 
 
-## Exploring the Data
+## Questions to Answer
 1. How many areas are measured in the survey?
   ```sql
   SELECT
