@@ -6,8 +6,9 @@ The purpose of this analysis is to analyze the results for the last 9 years aimi
 1. How many areas are measured in the survey?
 2. How many years of survey are available in the data?
 3. How many hospitals participated in the latest survey?
-4. What areas measured received the worst and best results in the lastest released survey nationally?
-5. all areas received an average of ##% poor rating which is good to start with. 
+4. What state have the highest average response rate for each survey year?
+5. What areas measured received the worst and best results in the lastest released survey nationally?
+6. all areas received an average of ##% poor rating which is good to start with. 
 7. What states had the most complited surveys?
 8. What state has the best response rate?
 9. What state has the worst average and the best average
@@ -40,9 +41,6 @@ The following is the entity relationship diagram that shows each how these table
   FROM
     luisalva.hopitals_patients_survey.measures
   ```
-  ![image](https://github.com/Luis102487/patients_survey/assets/96627296/05c46672-8d8f-4408-9ea6-3506889bcc7b)
-> There are ten areas measured in the survey.
-
 
 2. How many years of survey are available in the data?
   ```sql
@@ -54,11 +52,7 @@ The following is the entity relationship diagram that shows each how these table
     luisalva.hopitals_patients_survey.reports
   ORDER BY
     release_period;
-  ```
-  ![image](https://github.com/Luis102487/American-Hospital-Association-Survey/assets/96627296/15a395d2-f850-456c-a500-5c059cc9748d)
-
-> There are 9 years of survey available in the survey starting in 2013 until 2022.
-  
+  ``` 
   
 3. How many hospitals participated in the latest survey?
 
@@ -74,17 +68,9 @@ The following is the entity relationship diagram that shows each how these table
     release_period desc;
 ```
 
-5. What areas measured received the worst and best results in the lastest released survey nationally? 
+4. What state have the highest average response rate for each survey year? 
 
 ```sql
-SELECT
-  *
-FROM
-  luisalva.hopitals_patients_survey.state_results
-SELECT
-  *
-FROM
-  luisalva.hopitals_patients_survey.questions
 SELECT
   state,
   ROUND(AVG(response_rate), 2) AS response_rate
@@ -96,10 +82,9 @@ ORDER BY
   response_rate DESC;
 ```
 
-1. What areas measured received the worst and best results in the lastest released survey nationally? 
+5. What areas measured received the worst and best results in the lastest released survey nationally? 
 
 ```sql
-
 SELECT
   nr.release_period,
   m.measure AS area_measured,
@@ -120,13 +105,7 @@ WHERE
   nr.release_period = '07_2023'
 ORDER BY
   nr.release_period;
-
 ```
 
-RESULTS 
-![image](https://github.com/Luis102487/patients_survey/assets/96627296/47c269da-d1a5-444f-bb0e-839db084606c)
-
-> According to the survey hospitals struggle in the area of 'Communication about Medicines' but excel at 'Discharge Information'
-> 'Communication about Medicines' area measured received the highest poor rate with a 20% of participants surveyed stating that manage of this area was poor. Followed by 'Discharge Information' at a 14%; surprisingly this measure also received the highest good rating of all the areas measured in the latest survey. This show that for this specific measure there was not middle ground participants in the survey either like it or disliked the management of 'Discharge Information' and a lot of potential for opportunity.
-
 try some feature engeenering maybe
+investigate window functions
