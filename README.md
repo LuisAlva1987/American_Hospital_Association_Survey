@@ -5,7 +5,7 @@ The purpose of this analysis is to analyze the results for the last 9 years aimi
 
 1. How many areas are measured in the survey?
 2. How many years of survey are available in the data?
-3. How many hospitals are measured in the survey?
+3. How many hospitals participated in the latest survey?
 4. What areas measured received the worst and best results in the lastest released survey nationally?
 5. all areas received an average of ##% poor rating which is good to start with. 
 7. What states had the most complited surveys?
@@ -60,9 +60,21 @@ The following is the entity relationship diagram that shows each how these table
 > There are 9 years of survey available in the survey starting in 2013 until 2022.
   
   
-3. How many hospitals are measured in the survey?
+3. How many hospitals participated in the latest survey?
 
-4. What areas measured received the worst and best results in the lastest released survey nationally? 
+  ```sql
+  SELECT
+    release_period,
+    COUNT(facility_id) facility_count
+  FROM
+    luisalva.hopitals_patients_survey.responses
+  GROUP BY
+    release_period
+  ORDER BY
+    release_period desc;
+```
+
+5. What areas measured received the worst and best results in the lastest released survey nationally? 
 
 ```sql
 
