@@ -3,11 +3,18 @@
 American Hospital Association (AHA) is a national organization that represents hospitals and their patients, and acts as a source of information on health care issues and trends. Each year AHA produces the Hospital Consumer Assessment of Healthcare Providers and Systems (HCAHPS) survey. The intent of the HCAHPS initiative is to provide a standardized survey instrument for measuring patients’ perspectives on hospital care in order to create incentives for hospitals to improve their quality of care. 
 The purpose of this analysis is to analyze the results for the last 9 years aiming to answer the following questions:
 
-1. What areas measured received the worst and best results in the lastest released survey nationally?
-2. Have hospitals' HCAHPS scores improved over the past 9 years?
-3. Are there any specific areas where hospitals have made more progress than others?
-4. Are there any major areas of opportunity remaining?
-5. What recommendations can you make to hospitals to help them further improve the patient experience?
+1. How many areas are measured in the survey?
+2. How many years of survey are available in the data?
+3. How many hospitals are measured in the survey?
+4. What areas measured received the worst and best results in the lastest released survey nationally?
+5. all areas received an average of ##% poor rating which is good to start with. 
+7. What states had the most complited surveys?
+8. What state has the best response rate?
+9. What state has the worst average and the best average
+10. Have hospitals' HCAHPS scores improved over the past 9 years?
+11. Are there any specific areas where hospitals have made more progress than others?
+12. Are there any major areas of opportunity remaining?
+13. What recommendations can you make to hospitals to help them further improve the patient experience?
 
 
 ## About the Data
@@ -26,7 +33,7 @@ The following is the entity relationship diagram that shows each how these table
 
 
 ## Exploring the Data
-* How many areas are measured in the survey?
+1. How many areas are measured in the survey?
   ```sql
   SELECT
     DISTINCT measure AS area_measured
@@ -36,7 +43,8 @@ The following is the entity relationship diagram that shows each how these table
   ![image](https://github.com/Luis102487/patients_survey/assets/96627296/05c46672-8d8f-4408-9ea6-3506889bcc7b)
 > There are ten areas measured in the survey.
 
-* How many years of survey are available in the data?
+
+2. How many years of survey are available in the data?
   ```sql
   SELECT
     DISTINCT release_period,
@@ -51,11 +59,32 @@ The following is the entity relationship diagram that shows each how these table
 
 > There are 9 years of survey available in the survey starting in 2013 until 2022.
   
-* How is the survey measuring results?
-* How many hospitals are measured in the survey?
-* all areas received an average of ##% poor rating which is good to start with. 
+  
+3. How many hospitals are measured in the survey?
 
-## Questions to Answer
+4. What areas measured received the worst and best results in the lastest released survey nationally? 
+
+```sql
+
+SELECT
+  *
+FROM
+  luisalva.hopitals_patients_survey.state_results
+SELECT
+  *
+FROM
+  luisalva.hopitals_patients_survey.questions
+SELECT
+  state,
+  ROUND(AVG(response_rate AS int), 2) AS response_rate
+FROM
+  luisalva.hopitals_patients_survey.responses
+GROUP BY
+  state
+ORDER BY
+  response_rate DESC;
+
+```
 
 1. What areas measured received the worst and best results in the lastest released survey nationally? 
 
