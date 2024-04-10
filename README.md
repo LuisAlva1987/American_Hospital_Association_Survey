@@ -5,7 +5,7 @@ The purpose of this analysis is to analyze the results for the last 9 years aimi
 
 1. How many areas are measured in the survey?
 2. How many years of survey are available in the data?
-3. How many hospitals participated in the latest survey?
+3. What was the year where most hospitals participated in the survey?
 4. What state have the highest average response rate for each survey year?
 5. What areas measured received the worst and best results in the lastest released survey nationally?
 6. all areas received an average of ##% poor rating which is good to start with. 
@@ -54,7 +54,7 @@ The following is the entity relationship diagram that shows each how these table
     release_period;
   ``` 
   
-3. How many hospitals participated in the latest survey?
+3. What was the year where most hospitals participated in the survey?
 
   ```sql
   SELECT
@@ -65,7 +65,7 @@ The following is the entity relationship diagram that shows each how these table
   GROUP BY
     release_period
   ORDER BY
-    release_period desc;
+    facility_count desc;
 ```
 
 4. What state have the highest average response rate for each survey year? 
