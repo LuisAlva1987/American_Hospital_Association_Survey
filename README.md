@@ -135,4 +135,8 @@ The following is the entity relationship diagram that shows each how these table
 
 try some feature engeenering maybe
 investigate window functions
-dividelo by hospital participation.
+
+dividelo by hospital performance. 
+            state performance. 
+            measures/areas performance.
+            
