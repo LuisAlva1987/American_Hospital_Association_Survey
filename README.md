@@ -3,9 +3,20 @@
 American Hospital Association (AHA) is a national organization that represents hospitals and their patients, and acts as a source of information on health care issues and trends. Each year AHA produces the Hospital Consumer Assessment of Healthcare Providers and Systems (HCAHPS) survey. The intent of the HCAHPS initiative is to provide a standardized survey instrument for measuring patients’ perspectives on hospital care in order to create incentives for hospitals to improve their quality of care. 
 The purpose of this analysis is to analyze the results for the last 9 years aiming to answer the following questions:
 
+Hospital Performance
+* How many hospitals participated in the latest survey? 
+* What was the year where most hospitals participated in the survey?
+* How hospitals participation has been performing? how volume of participation has increase or decrease over the years? Do a 
+   function window maybe.
+* What recommendations can you make to hospitals to help them further improve the patient experience?
+* Have hospitals' HCAHPS scores improved over the past 9 years?
+
+State Performance
+
+
+
 1. How many areas are measured in the survey?
-2. How hospitals participation has been performing? how volume of participation has increase or decrease over the years? Do a function window maybe.
-3. What was the year where most hospitals participated in the survey?
+   
 4. What state has the highest average response rate all years combined? What state has the lowest?
 5. What states have the highest average response rate for each survey year?
 7. What areas measured received the worst and best results in the lastest released survey nationally?
@@ -13,12 +24,8 @@ The purpose of this analysis is to analyze the results for the last 9 years aimi
 9. What states had the most complited surveys?
 10. What state has the best response rate?
 11. What state has the worst average and the best average
-12. Have hospitals' HCAHPS scores improved over the past 9 years?
-13. Are there any specific areas where hospitals have made more progress than others?
-14. Are there any major areas of opportunity remaining?
-15. What recommendations can you make to hospitals to help them further improve the patient experience?
 16. what area/measure had the lowest average for all surveys?
-
+* Are there any specific areas where hospitals have made more progress than others?
 
 ## About the Data
 
