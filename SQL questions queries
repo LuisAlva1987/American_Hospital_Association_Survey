@@ -19,3 +19,6 @@ What areas measured received the worst and best results in the lastest released 
 what area/measure had the lowest average for all surveys?
 Are there any specific areas where hospitals have made more progress than others?
 All areas received an average of ##% poor rating which is good to start with.
+
+select *
+from vbbb
