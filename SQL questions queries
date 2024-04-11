@@ -41,3 +41,11 @@ SELECT
   DISTINCT customer_type
 FROM
   luisalva.walmart_dataset.walmart_sales;
+
+
+   ```sql
+   SELECT
+     DISTINCT measure AS area_measured
+   FROM
+     luisalva.hopitals_patients_survey.measures
+   ```
