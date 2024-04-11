@@ -36,3 +36,8 @@ FROM
   luisalva.hopitals_patients_survey.responses
 WHERE
   release_period = '07_2023'; 
+
+SELECT
+  DISTINCT customer_type
+FROM
+  luisalva.walmart_dataset.walmart_sales;
