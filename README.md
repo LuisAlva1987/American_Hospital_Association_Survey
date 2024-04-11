@@ -4,18 +4,20 @@ American Hospital Association (AHA) is a national organization that represents h
 The purpose of this analysis is to analyze the results for the last 9 years aiming to answer the following questions:
 
 1. How many areas are measured in the survey?
-2. How many years of survey are available in the data?
+2. How hospitals participation has been performing? how volume of participation has increase or decrease over the years? Do a function window maybe.
 3. What was the year where most hospitals participated in the survey?
-4. What state have the highest average response rate for each survey year?
-5. What areas measured received the worst and best results in the lastest released survey nationally?
-6. all areas received an average of ##% poor rating which is good to start with. 
-7. What states had the most complited surveys?
-8. What state has the best response rate?
-9. What state has the worst average and the best average
-10. Have hospitals' HCAHPS scores improved over the past 9 years?
-11. Are there any specific areas where hospitals have made more progress than others?
-12. Are there any major areas of opportunity remaining?
-13. What recommendations can you make to hospitals to help them further improve the patient experience?
+4. What state has the highest average response rate all years combined? What state has the lowest?
+5. What states have the highest average response rate for each survey year?
+7. What areas measured received the worst and best results in the lastest released survey nationally?
+8. all areas received an average of ##% poor rating which is good to start with. 
+9. What states had the most complited surveys?
+10. What state has the best response rate?
+11. What state has the worst average and the best average
+12. Have hospitals' HCAHPS scores improved over the past 9 years?
+13. Are there any specific areas where hospitals have made more progress than others?
+14. Are there any major areas of opportunity remaining?
+15. What recommendations can you make to hospitals to help them further improve the patient experience?
+16. what area/measure had the lowest average for all surveys?
 
 
 ## About the Data
@@ -35,77 +37,102 @@ The following is the entity relationship diagram that shows each how these table
 
 ## Questions to Answer
 1. How many areas are measured in the survey?
-  ```sql
-  SELECT
-    DISTINCT measure AS area_measured
-  FROM
-    luisalva.hopitals_patients_survey.measures
-  ```
+   ```sql
+   SELECT
+     DISTINCT measure AS area_measured
+   FROM
+     luisalva.hopitals_patients_survey.measures
+   ```
 
-2. How many years of survey are available in the data?
-  ```sql
-  SELECT
-    DISTINCT release_period,
-    start_date,
-    end_date
-  FROM
-    luisalva.hopitals_patients_survey.reports
-  ORDER BY
-    release_period;
-  ``` 
+2. How hospitals participation has been performing
+  
   
 3. What was the year where most hospitals participated in the survey?
+   ```sql
+   SELECT
+     release_period,
+     COUNT(facility_id) facility_count
+   FROM
+     luisalva.hopitals_patients_survey.responses
+   GROUP BY
+     release_period
+   ORDER BY
+     facility_count desc;
+   ```
 
-  ```sql
-  SELECT
-    release_period,
-    COUNT(facility_id) facility_count
-  FROM
-    luisalva.hopitals_patients_survey.responses
-  GROUP BY
-    release_period
-  ORDER BY
-    facility_count desc;
-```
+4. What state has the highest average response rate all years combined? What state has the lowest?
+   ```sql
+   SELECT
+     state,
+     ROUND(AVG(response_rate), 2) AS response_rate
+   FROM
+     luisalva.hopitals_patients_survey.responses
+   GROUP BY
+     state
+   ORDER BY
+     response_rate DESC;
+   ```
+5. What states have the highest average response rate for each survey year?
+   ```sql
+   WITH
+     FIRST AS (
+   SELECT
+     state,
+     release_period,
+     ROUND(AVG(CAST(response_rate AS int)), 2) AS avg_response_rate
+   FROM
+     luisalva.hopitals_patients_survey.responses
+   GROUP BY
+     state,
+     release_period
+   ORDER BY
+     state,
+     release_period)
+   
+   SELECT
+     f.state,
+     f.release_period,
+     f.avg_response_rate
+   FROM
+     FIRST f
+   INNER JOIN (
+     SELECT
+       release_period,
+       MAX(avg_response_rate) AS max_avg_response_rate
+     FROM
+       FIRST
+     GROUP BY
+       release_period) AS fi
+   ON
+     f.avg_response_rate = fi.max_avg_response_rate
+   ORDER BY
+     release_period DESC;
+   ```
 
-4. What state have the highest average response rate for each survey year? 
-
-```sql
-SELECT
-  state,
-  ROUND(AVG(response_rate), 2) AS response_rate
-FROM
-  luisalva.hopitals_patients_survey.responses
-GROUP BY
-  state
-ORDER BY
-  response_rate DESC;
-```
-
-5. What areas measured received the worst and best results in the lastest released survey nationally? 
-
-```sql
-SELECT
-  nr.release_period,
-  m.measure AS area_measured,
-  nr.bottom_box_percentage AS poor,
-  nr.middle_box_percentage AS fair,
-  nr.top_box_percentage AS good
-FROM
-  luisalva.hopitals_patients_survey.measures m
-JOIN
-  luisalva.hopitals_patients_survey.national_results nr
-ON
-  m.measure_id = nr.measure_id
-JOIN
-  luisalva.hopitals_patients_survey.reports r
-ON
-  nr.release_period = r.release_period
-WHERE
-  nr.release_period = '07_2023'
-ORDER BY
-  nr.release_period;
-```
+6. What areas measured received the worst and best results in the lastest released survey nationally? 
+   ```sql
+   SELECT
+     nr.release_period,
+     m.measure AS area_measured,
+     nr.bottom_box_percentage AS poor,
+     nr.middle_box_percentage AS fair,
+     nr.top_box_percentage AS good
+   FROM
+     luisalva.hopitals_patients_survey.measures m
+   JOIN
+     luisalva.hopitals_patients_survey.national_results nr
+   ON
+     m.measure_id = nr.measure_id
+   JOIN
+     luisalva.hopitals_patients_survey.reports r
+   ON
+     nr.release_period = r.release_period
+   WHERE
+     nr.release_period = '07_2023'
+   ORDER BY
+     nr.release_period;
+   ```
 
 try some feature engeenering maybe
 investigate window functions
+dividelo by hospital participation.
