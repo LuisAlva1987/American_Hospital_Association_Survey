@@ -28,3 +28,11 @@ CREATE TABLE IF NOT EXISTS sales(
     gender VARCHAR(30) NOT NULL,
     product_line VARCHAR(100) NOT NULL,
     unit_price DECIMAL(10,2) NOT NULL;
+
+
+SELECT
+  COUNT(facility_id) AS hospital_id
+FROM
+  luisalva.hopitals_patients_survey.responses
+WHERE
+  release_period = '07_2023'; 
