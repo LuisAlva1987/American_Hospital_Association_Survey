@@ -12,20 +12,18 @@ Hospital Performance
 * Have hospitals' HCAHPS scores improved over the past 9 years?
 
 State Performance
+* What state has the highest average response rate all years combined? What state has the lowest?
+* What states have the highest average response rate for each survey year?
+* What states had the most complited surveys?
+* What state has the best response rate?
+* What state has the worst average and the best average
 
-
-
-1. How many areas are measured in the survey?
-   
-4. What state has the highest average response rate all years combined? What state has the lowest?
-5. What states have the highest average response rate for each survey year?
-7. What areas measured received the worst and best results in the lastest released survey nationally?
-8. all areas received an average of ##% poor rating which is good to start with. 
-9. What states had the most complited surveys?
-10. What state has the best response rate?
-11. What state has the worst average and the best average
-16. what area/measure had the lowest average for all surveys?
+Area/Measure Performance
+* How many areas are measured in the survey?
+* What areas measured received the worst and best results in the lastest released survey nationally?
+* what area/measure had the lowest average for all surveys?
 * Are there any specific areas where hospitals have made more progress than others?
+* All areas received an average of ##% poor rating which is good to start with. 
 
 ## About the Data
 
