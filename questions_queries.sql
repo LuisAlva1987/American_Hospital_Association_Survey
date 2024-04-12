@@ -1,6 +1,6 @@
 -- Hospital Performance
 
---How many hospitals participated in the latest survey?
+--How many hospitals participated in the latest survey? each year surveyed
 SELECT
   COUNT(facility_id) AS hospital_id
 FROM
@@ -8,7 +8,7 @@ FROM
 WHERE
   release_period = '07_2023'; 
 
---What is the state with best participation of hospitals over the years?
+--What is the state with best participation of hospitals over the years? best average maybe
 SELECT
   state,
   COUNT(facility_id) AS facility_count
@@ -99,9 +99,6 @@ ON
 ORDER BY
   release_period DESC;
 
-
---What state has the best response rate?
---What state has the worst average and the best average
 
 
 --Have hospitals' HCAHPS scores improved over the past 9 years?
