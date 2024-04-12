@@ -99,8 +99,6 @@ ON
 ORDER BY
   release_period DESC;
 
---What states had the most complited surveys?
-
 
 --What state has the best response rate?
 --What state has the worst average and the best average
