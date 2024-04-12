@@ -103,8 +103,13 @@ ORDER BY
 --Area/Measure Performance
 
 --How many areas are measured in the survey?
+SELECT
+  DISTINCT measure AS area_measured
+FROM
+  luisalva.hopitals_patients_survey.measures
 
 --What areas measured received the worst and best results in the lastest released survey nationally?
+
 --what area/measure had the lowest average for all surveys?
 --Are there any specific areas where hospitals have made more progress than others?
 --All areas received an average of ##% poor rating which is good to start with.
