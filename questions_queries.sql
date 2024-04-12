@@ -100,6 +100,16 @@ ORDER BY
   release_period DESC;
 
 
+--Area/Measure Performance
+
+--How many areas are measured in the survey?
+
+--What areas measured received the worst and best results in the lastest released survey nationally?
+--what area/measure had the lowest average for all surveys?
+--Are there any specific areas where hospitals have made more progress than others?
+--All areas received an average of ##% poor rating which is good to start with.
+
+
 
 --Have hospitals' HCAHPS scores improved over the past 9 years?
 
