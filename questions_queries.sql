@@ -109,6 +109,26 @@ FROM
   luisalva.hopitals_patients_survey.measures
 
 --What areas measured received the worst and best results in the lastest released survey nationally?
+SELECT
+  nr.release_period,
+  m.measure AS area_measured,
+  nr.bottom_box_percentage AS poor,
+  nr.middle_box_percentage AS fair,
+  nr.top_box_percentage AS good
+FROM
+  luisalva.hopitals_patients_survey.measures m
+JOIN
+  luisalva.hopitals_patients_survey.national_results nr
+ON
+  m.measure_id = nr.measure_id
+JOIN
+  luisalva.hopitals_patients_survey.reports r
+ON
+  nr.release_period = r.release_period
+WHERE
+  nr.release_period = '07_2023'
+ORDER BY
+  nr.release_period;
 
 --what area/measure had the lowest average for all surveys?
 --Are there any specific areas where hospitals have made more progress than others?
