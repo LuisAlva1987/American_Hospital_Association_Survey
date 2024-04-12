@@ -54,7 +54,19 @@ ORDER BY
 --State Performance
 
 --What state has the highest average response rate all years combined? What state has the lowest?
+SELECT
+  state,
+  ROUND(AVG(response_rate), 2) AS response_rate
+FROM
+  luisalva.hopitals_patients_survey.responses
+GROUP BY
+  state
+ORDER BY
+  response_rate DESC;
+
 --What states have the highest average response rate for each survey year?
+
+
 --What states had the most complited surveys?
 --What state has the best response rate?
 --What state has the worst average and the best average
