@@ -65,9 +65,43 @@ ORDER BY
   response_rate DESC;
 
 --What states have the highest average response rate for each survey year?
+WITH
+  FIRST AS (
+SELECT
+  state,
+  release_period,
+  ROUND(AVG(CAST(response_rate AS int)), 2) AS avg_response_rate
+FROM
+  luisalva.hopitals_patients_survey.responses
+GROUP BY
+  state,
+  release_period
+ORDER BY
+  state,
+  release_period)
 
+SELECT
+  f.state,
+  f.release_period,
+  f.avg_response_rate
+FROM
+  FIRST f
+INNER JOIN (
+  SELECT
+    release_period,
+    MAX(avg_response_rate) AS max_avg_response_rate
+  FROM
+    FIRST
+  GROUP BY
+    release_period) AS fi
+ON
+  f.avg_response_rate = fi.max_avg_response_rate
+ORDER BY
+  release_period DESC;
 
 --What states had the most complited surveys?
+
+
 --What state has the best response rate?
 --What state has the worst average and the best average
 
