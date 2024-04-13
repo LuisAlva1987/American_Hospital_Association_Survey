@@ -130,7 +130,31 @@ WHERE
 ORDER BY
   nr.release_period;
 
+--What is the area that received the highest poor measure in the latest survey?
+SELECT
+  nr.release_period,
+  m.measure AS measure,
+  nr.bottom_box_percentage AS poor,
+  nr.middle_box_percentage AS acceptable,
+  nr.top_box_percentage AS good
+FROM
+  luisalva.hopitals_patients_survey.measures m
+JOIN
+  luisalva.hopitals_patients_survey.national_results nr
+ON
+  m.measure_id = nr.measure_id
+JOIN
+  luisalva.hopitals_patients_survey.reports r
+ON
+  nr.release_period = r.release_period
+WHERE
+  nr.release_period = '07_2023'
+ORDER BY
+  poor DESC;
+
 --what area/measure had the lowest average for all surveys?
+
+
 --Are there any specific areas where hospitals have made more progress than others?
 --All areas received an average of ##% poor rating which is good to start with.
 
