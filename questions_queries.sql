@@ -1,6 +1,6 @@
 -- Hospital Performance
 
---How many hospitals participated each year surveyed?
+--How many hospitals participated each year survey was conducted?
 SELECT
   release_period,
   COUNT(facility_id) AS hospital_count
