@@ -1,36 +1,49 @@
 -- Hospital Performance
 
---How many hospitals participated in the latest survey? each year surveyed
-SELECT
-  COUNT(facility_id) AS hospital_id
-FROM
-  luisalva.hopitals_patients_survey.responses
-WHERE
-  release_period = '07_2023'; 
-
---What is the state with best participation of hospitals over the years? best average maybe
-SELECT
-  state,
-  COUNT(facility_id) AS facility_count
-FROM
-  luisalva.hopitals_patients_survey.responses
-GROUP BY
-  state
-ORDER BY
-  facility_count DESC
-LIMIT
-  1;
-
---What were the years with the highest and lowest hospitals survey participation?
+--How many hospitals participated each year surveyed?
 SELECT
   release_period,
-  COUNT(facility_id) facility_count
+  COUNT(facility_id) AS hospital_count
 FROM
   luisalva.hopitals_patients_survey.responses
 GROUP BY
   release_period
 ORDER BY
-  facility_count DESC;
+  release_period DESC;
+
+--How many hospitals per state participated in the lastest survey?
+  SELECT
+    state,
+    COUNT(facility_id) AS hospital_count
+  FROM
+    luisalva.hopitals_patients_survey.responses
+  WHERE release_period = '07_2023'
+  GROUP BY
+    state
+  ORDER BY 
+    state;
+
+--What is the average state hospital participation all year surveyed?
+WITH
+  state_count AS (
+  SELECT
+    state,
+    COUNT(facility_id) AS facility_count
+  FROM
+    luisalva.hopitals_patients_survey.responses
+  GROUP BY
+    state)
+
+  SELECT
+    state,
+    ROUND(facility_count/(SELECT
+                            COUNT(DISTINCT release_period)
+                          FROM
+                            luisalva.hopitals_patients_survey.responses), 2) AS avg_facility_count
+  FROM
+    state_count
+  ORDER BY
+    state;
 
 --How hospitals participation has been performing? How volume of participation has increase or decrease over the years?
 WITH
@@ -53,7 +66,7 @@ ORDER BY
 
 --State Performance
 
---What state has the highest average response rate all years combined? What state has the lowest?
+--What is the average state response rate for all years surveyed?
 SELECT
   state,
   ROUND(AVG(response_rate), 2) AS response_rate
@@ -108,7 +121,7 @@ SELECT
 FROM
   luisalva.hopitals_patients_survey.measures
 
---What areas measured received the worst and best results in the lastest released survey nationally?
+--What are the areas measured results nationally for last year?
 SELECT
   nr.release_period,
   m.measure AS area_measured,
@@ -127,16 +140,12 @@ ON
   nr.release_period = r.release_period
 WHERE
   nr.release_period = '07_2023'
-ORDER BY
-  nr.release_period;
 
 --What is the area that received the highest poor measure in the latest survey?
 SELECT
   nr.release_period,
   m.measure AS measure,
   nr.bottom_box_percentage AS poor,
-  nr.middle_box_percentage AS acceptable,
-  nr.top_box_percentage AS good
 FROM
   luisalva.hopitals_patients_survey.measures m
 JOIN
@@ -152,14 +161,30 @@ WHERE
 ORDER BY
   poor DESC;
 
+--What is the area that received the highest good measure in the latest survey?
+SELECT
+  nr.release_period,
+  m.measure AS measure,
+  nr.top_box_percentage AS good,
+FROM
+  luisalva.hopitals_patients_survey.measures m
+JOIN
+  luisalva.hopitals_patients_survey.national_results nr
+ON
+  m.measure_id = nr.measure_id
+JOIN
+  luisalva.hopitals_patients_survey.reports r
+ON
+  nr.release_period = r.release_period
+WHERE
+  nr.release_period = '07_2023'
+ORDER BY
+  good DESC;
+
 --what area/measure had the lowest average for all surveys?
 
 
 --Are there any specific areas where hospitals have made more progress than others?
 --All areas received an average of ##% poor rating which is good to start with.
-
-
-
 --Have hospitals' HCAHPS scores improved over the past 9 years?
-
 --What recommendations can you make to hospitals to help them further improve the patient experience?
