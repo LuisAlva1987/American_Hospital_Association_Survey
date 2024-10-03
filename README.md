@@ -41,6 +41,40 @@ The following is the entity relationship diagram that shows each how these table
 
 
 ## Questions to Answer
+
+### Hospital Performance
+
+* How many hospitals participated each year survey was conducted?
+  ```sql
+  SELECT
+     release_period,
+     COUNT(facility_id) AS hospital_count
+  FROM
+     luisalva.hopitals_patients_survey.responses
+  GROUP BY
+     release_period
+  ORDER BY
+     release_period DESC;
+  ```
+
+* How many hospitals per state participated in the lastest survey?
+  ```sql
+  SELECT
+    state,
+    COUNT(facility_id) AS hospital_count
+  FROM
+    luisalva.hopitals_patients_survey.responses
+  WHERE release_period = '07_2023'
+  GROUP BY
+    state
+  ORDER BY 
+    state;
+  ```
+
+
+
+
+
 1. How many areas are measured in the survey?
    ```sql
    SELECT
