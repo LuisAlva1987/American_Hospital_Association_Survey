@@ -7,7 +7,8 @@ provide recomendations to improve their quality of care.
 
 ### Hospital Performance
 * Has the volume of hospital participation increase or decrease over the years?
-* Has the volume of patient involvement (surveys completed by patients in hospitals) increase or decreased over the years? 
+* Has the volume of patient involvement (surveys completed by patients in hospitals) increase or decreased over the years?
+* What recommendations can you make to hospitals to help them further iprove patient involvement (surveys completed by patients in hospitals)?
 * What recommendations can you make to hospitals to help them further improve the patient experience?
 * Have hospitals' HCAHPS scores improved over the past 9 years?
 
