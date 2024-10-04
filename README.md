@@ -77,17 +77,18 @@ Overall, the volume of hospital participation has stay steady over the last 9 ye
 
 
 **What recommendations can you make to hospitals to help them further improve the patient experience?**
+
+Average response rate has been decreasing years by year. Improve survey response rate in hospitals to get a better, more data about the issues.
   ```sql
   SELECT
-    state,
-    COUNT(facility_id) AS hospital_count
+    release_period,
+    AVG(response_rate)
   FROM
     luisalva.hopitals_patients_survey.responses
-  WHERE release_period = '07_2023'
   GROUP BY
-    state
-  ORDER BY 
-    state;
+    release_period
+  ORDER BY
+    release_period DESC
   ```
 
 
