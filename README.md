@@ -1,24 +1,26 @@
 # American Hospital Association Survey Data Analysis
 
-American Hospital Association (AHA) is a national organization that represents hospitals and their patients, and acts as a source of information on health care issues and trends. Each year AHA produces the Hospital Consumer Assessment of Healthcare Providers and Systems (HCAHPS) survey. The intent of the HCAHPS initiative is to provide a standardized survey instrument for measuring patients’ perspectives on hospital care in order to create incentives for hospitals to improve their quality of care. 
-The purpose of this analysis is to analyze the results for the last 9 years aiming to answer the following questions:
+American Hospital Association (AHA) is a national organization that represents hospitals and their patients, and acts as a source of information on health care issues and trends. Each year AHA produces the Hospital Consumer Assessment of Healthcare Providers and Systems (HCAHPS) survey. The intent of the HCAHPS survey is to provide an instrument for measuring patients’ perspectives on hospital care in order to create incentives for hospitals to improve their quality of care. 
 
-Hospital Performance
-* How many hospitals participated in the latest survey? 
+The purpose of this project is to analyze the survey data for the last 9 years using SQL aiming to answer the following questions:
+
+### Hospital Performance
+* How many hospitals participated each year the survey was conducted?
 * What was the year where most hospitals participated in the survey?
+* What was the average of hospitals that particpated during the years surveyed?
 * How hospitals participation has been performing? how volume of participation has increase or decrease over the years? Do a 
    function window maybe.
 * What recommendations can you make to hospitals to help them further improve the patient experience?
 * Have hospitals' HCAHPS scores improved over the past 9 years?
 
-State Performance
+### State Performance
 * What state has the highest average response rate all years combined? What state has the lowest?
 * What states have the highest average response rate for each survey year?
 * What states had the most complited surveys?
 * What state has the best response rate?
 * What state has the worst average and the best average
 
-Area/Measure Performance
+### Area/Measure Performance
 * How many areas are measured in the survey?
 * What areas measured received the worst and best results in the lastest released survey nationally?
 * what area/measure had the lowest average for all surveys?
@@ -44,18 +46,37 @@ The following is the entity relationship diagram that shows each how these table
 
 ### Hospital Performance
 
-* How many hospitals participated each year survey was conducted?
+* How many hospitals participated each year the survey was conducted? What was the year where most hospitals participated in the survey?
   ```sql
   SELECT
-     release_period,
+     release_period AS year,
      COUNT(facility_id) AS hospital_count
   FROM
      luisalva.hopitals_patients_survey.responses
   GROUP BY
-     release_period
+     year
   ORDER BY
-     release_period DESC;
+     year DESC;
   ```
+The results of this query shows the amount of hospitals thart partcipated each year the survey was conducted.
+
+* What was the year where most hospitals participated in the survey?
+  ```sql
+  SELECT
+     release_period AS year,
+     COUNT(facility_id) AS hospital_count
+  FROM
+     luisalva.hopitals_patients_survey.responses
+  GROUP BY
+     year
+  ORDER BY
+     hospital_count DESC
+  LIMIT 1;
+  ```
+  The result of this query shows that 2019 was the year that most hospitals participated in the survey with 4,895 hospitals.
+
+* What was the average of hospitals that particpated during the years surveyed?
+  
 
 * How many hospitals per state participated in the lastest survey?
   ```sql
