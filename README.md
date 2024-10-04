@@ -43,9 +43,9 @@ The following is the entity relationship diagram that shows each how these table
 
 ### Hospital Performance
 
-* **Has the volume of hospital participation increase or decrease over the years?**
+**Has the volume of hospital participation increase or decrease over the years?**
 
-In order to find the answer to this questions, first we need find how many hospitals participated each year the survey was conducted. We can achieve this by counting facility ID grouped by release period ordering by facility ID count DESC to also find the year with the most hospital participation (query below).
+In order to find the answer to this questions, first we need find how many hospitals participated each year the survey was conducted. We can achieve this by counting hospital_count  (facility_id) grouped by year (release_period) ordered by hospital_count DESC to also find the year with the most and least hospital participation.
   ```sql
   SELECT
      release_period AS year,
@@ -57,7 +57,6 @@ In order to find the answer to this questions, first we need find how many hospi
   ORDER BY
      hospital_count DESC;
   ```
-The results of this query shows the amount of hospitals that partcipated each year the survey was conducted and also shows that 2019 was the year that most hospitals participated in the survey with 4,895 hospitals.
   
 We can also create a query to find average hospitals particpation during the years surveyed to see what years were higher or lower than the average.
   ```sql
@@ -73,8 +72,8 @@ We can also create a query to find average hospitals particpation during the yea
   SELECT ROUND(AVG(hospital_count), 2) AS hospital_average
   FROM hospitals;
   ```
-The average hospitals participation during the years surveyed is 4,802. Most of years survey (2015 through 2023) were above the average in hospital participation, the only years lower than the average were 2015, 2016, and 2018.
 
+Overall, the volume of hospital participation has stay steady over the last 9 years the survey was condusted. Year 2019 was the year with most hospital participation with 4,895 hospitals while 2016 had the least hospital participation with 4,628 hospitals. That is a difference of 219 hospitals between these two years, which shows that there hasn't been any sharp decreases or increases in participation. The average hospitals participation during the years surveyed is 4,802. Only three of the surveyed years (2015, 2016, and 2018) were below the average participation while most of the recent years surveyed (last six years) were above average hospital participation. That signs a tendency of participation increase over the years. 
 
 
 * How many hospitals per state participated in the lastest survey?
