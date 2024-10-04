@@ -2,12 +2,13 @@
 
 American Hospital Association (AHA) is a national organization that represents hospitals and their patients, and acts as a source of information on health care issues and trends. Each year AHA produces the Hospital Consumer Assessment of Healthcare Providers and Systems (HCAHPS) survey. The intent of the HCAHPS survey is to provide an instrument for measuring patients’ perspectives on hospital care in order to create incentives for hospitals to improve their quality of care. 
 
-The purpose of this project is to analyze the survey data for the last 9 years using SQL to answer the following questions aiming to 
+The purpose of this project is to analyze the survey data for the last 9 years (2015 through 2023) using SQL to answer the following questions aiming to 
 provide recomendations to improve their quality of care. 
 
 ### Hospital Performance
-* How are hospital engagement in the survey?  Has the volume of hospital participation increase or decrease over the years? 
-   * How many hospitals participated each year the survey was conducted?* What was the year where most hospitals participated in the survey?
+* Has the volume of hospital participation increase or decrease over the years? 
+   * How many hospitals participated each year the survey was conducted?
+   * * What was the year where most hospitals participated in the survey?
    * What was the average of hospitals that particpated during the years surveyed?
 * What recommendations can you make to hospitals to help them further improve the patient experience?
 * Have hospitals' HCAHPS scores improved over the past 9 years?
@@ -45,7 +46,8 @@ The following is the entity relationship diagram that shows each how these table
 
 ### Hospital Performance
 
-* How many hospitals participated each year the survey was conducted? What was the year where most hospitals participated in the survey?
+* Has the volume of hospital participation increase or decrease over the years?
+In order to find the answer to this questions, first we need find how many hospitals participated each year the survey was conducted. We can achieve this by counting facility ID grouped by release period ordering by facility ID count DESC to also find the year with the most hospital participation (query below).
   ```sql
   SELECT
      release_period AS year,
@@ -55,28 +57,12 @@ The following is the entity relationship diagram that shows each how these table
   GROUP BY
      year
   ORDER BY
-     year DESC;
+     hospital_count DESC;
   ```
-The results of this query shows the amount of hospitals thart partcipated each year the survey was conducted.
-
-
-* What was the year where most hospitals participated in the survey?
-  ```sql
-  SELECT
-     release_period AS year,
-     COUNT(facility_id) AS hospital_count
-  FROM
-     luisalva.hopitals_patients_survey.responses
-  GROUP BY
-     year
-  ORDER BY
-     hospital_count DESC
-  LIMIT 1;
-  ```
-  The result of this query shows that 2019 was the year that most hospitals participated in the survey with 4,895 hospitals.
+The results of this query shows the amount of hospitals that partcipated each year the survey was conducted and also shows that 2019 was the year that most hospitals participated in the survey with 4,895 hospitals.
   
 
-* What was the average of hospitals that particpated during the years surveyed?
+* We can also create a query to find average hospitals particpation during the years surveyed to see what years were higher or lower than the average.
   ```sql
     WITH hospitals AS (
     SELECT
@@ -90,9 +76,9 @@ The results of this query shows the amount of hospitals thart partcipated each y
   SELECT ROUND(AVG(hospital_count), 2) AS hospital_average
   FROM hospitals;
   ```
-  The average of hospitals that particpated during the years surveyed is 4,802
-  
-  
+The average hospitals participation during the years surveyed is 4,802. Most of years survey (2015 through 2023) were above the average in hospital participation, the only years lower than the average were 2015, 2016, and 2018.
+
+
 
 * How many hospitals per state participated in the lastest survey?
   ```sql
