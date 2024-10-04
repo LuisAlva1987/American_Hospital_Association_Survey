@@ -7,9 +7,6 @@ provide recomendations to improve their quality of care.
 
 ### Hospital Performance
 * Has the volume of hospital participation increase or decrease over the years? 
-   * How many hospitals participated each year the survey was conducted?
-   * * What was the year where most hospitals participated in the survey?
-   * What was the average of hospitals that particpated during the years surveyed?
 * What recommendations can you make to hospitals to help them further improve the patient experience?
 * Have hospitals' HCAHPS scores improved over the past 9 years?
 
@@ -46,7 +43,8 @@ The following is the entity relationship diagram that shows each how these table
 
 ### Hospital Performance
 
-* Has the volume of hospital participation increase or decrease over the years?
+* **Has the volume of hospital participation increase or decrease over the years?**
+
 In order to find the answer to this questions, first we need find how many hospitals participated each year the survey was conducted. We can achieve this by counting facility ID grouped by release period ordering by facility ID count DESC to also find the year with the most hospital participation (query below).
   ```sql
   SELECT
@@ -61,8 +59,7 @@ In order to find the answer to this questions, first we need find how many hospi
   ```
 The results of this query shows the amount of hospitals that partcipated each year the survey was conducted and also shows that 2019 was the year that most hospitals participated in the survey with 4,895 hospitals.
   
-
-* We can also create a query to find average hospitals particpation during the years surveyed to see what years were higher or lower than the average.
+We can also create a query to find average hospitals particpation during the years surveyed to see what years were higher or lower than the average.
   ```sql
     WITH hospitals AS (
     SELECT
