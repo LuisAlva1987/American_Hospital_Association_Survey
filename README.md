@@ -2,14 +2,13 @@
 
 American Hospital Association (AHA) is a national organization that represents hospitals and their patients, and acts as a source of information on health care issues and trends. Each year AHA produces the Hospital Consumer Assessment of Healthcare Providers and Systems (HCAHPS) survey. The intent of the HCAHPS survey is to provide an instrument for measuring patients’ perspectives on hospital care in order to create incentives for hospitals to improve their quality of care. 
 
-The purpose of this project is to analyze the survey data for the last 9 years using SQL aiming to answer the following questions:
+The purpose of this project is to analyze the survey data for the last 9 years using SQL to answer the following questions aiming to 
+provide recomendations to improve their quality of care. 
 
 ### Hospital Performance
-* How many hospitals participated each year the survey was conducted?
-* What was the year where most hospitals participated in the survey?
-* What was the average of hospitals that particpated during the years surveyed?
-* How hospitals participation has been performing? how volume of participation has increase or decrease over the years? Do a 
-   function window maybe.
+* How are hospital engagement in the survey?  Has the volume of hospital participation increase or decrease over the years? 
+   * How many hospitals participated each year the survey was conducted?* What was the year where most hospitals participated in the survey?
+   * What was the average of hospitals that particpated during the years surveyed?
 * What recommendations can you make to hospitals to help them further improve the patient experience?
 * Have hospitals' HCAHPS scores improved over the past 9 years?
 
@@ -42,7 +41,7 @@ The following is the entity relationship diagram that shows each how these table
 ![image](https://github.com/Luis102487/patients_survey/assets/96627296/6e144772-3720-447c-b3c3-f3843e1b98da)
 
 
-## Questions to Answer
+## Questions
 
 ### Hospital Performance
 
@@ -60,6 +59,7 @@ The following is the entity relationship diagram that shows each how these table
   ```
 The results of this query shows the amount of hospitals thart partcipated each year the survey was conducted.
 
+
 * What was the year where most hospitals participated in the survey?
   ```sql
   SELECT
@@ -74,8 +74,24 @@ The results of this query shows the amount of hospitals thart partcipated each y
   LIMIT 1;
   ```
   The result of this query shows that 2019 was the year that most hospitals participated in the survey with 4,895 hospitals.
+  
 
 * What was the average of hospitals that particpated during the years surveyed?
+  ```sql
+    WITH hospitals AS (
+    SELECT
+      release_period AS year,
+      COUNT(facility_id) AS hospital_count
+    FROM
+      luisalva.hopitals_patients_survey.responses
+    GROUP BY
+      year)
+
+  SELECT ROUND(AVG(hospital_count), 2) AS hospital_average
+  FROM hospitals;
+  ```
+  The average of hospitals that particpated during the years surveyed is 4,802
+  
   
 
 * How many hospitals per state participated in the lastest survey?
