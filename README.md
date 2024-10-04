@@ -73,10 +73,10 @@ We can also create a query to find average hospitals particpation during the yea
   FROM hospitals;
   ```
 
-Overall, the volume of hospital participation has stay steady over the last 9 years the survey was condusted. Year 2019 was the year with most hospital participation with 4,895 hospitals while 2016 had the least hospital participation with 4,628 hospitals. That is a difference of 219 hospitals between these two years, which shows that there hasn't been any sharp decreases or increases in participation. The average hospitals participation during the years surveyed is 4,802. Only three of the surveyed years (2015, 2016, and 2018) were below the average participation while most of the recent years surveyed (last six years) were above average hospital participation. That signs a tendency of participation increase over the years. 
+Overall, the volume of hospital participation has stay steady over the last 9 years the survey was condusted. Year 2019 was the year with most hospital participation with 4,895 hospitals while 2016 had the least hospital participation with 4,628 hospitals. That is a difference of 219 hospitals between these two years, which shows that there hasn't been any sharp decreases or increases in participation. The average hospitals participation during the years surveyed is 4,802. Only three of the surveyed years (2015, 2016, and 2018) were below the average participation while most of the recent years surveyed (last six years) were above average hospital participation. This fact signs a tendency of participation increase over the years. 
 
 
-* How many hospitals per state participated in the lastest survey?
+**What recommendations can you make to hospitals to help them further improve the patient experience?**
   ```sql
   SELECT
     state,
