@@ -128,9 +128,11 @@ ORDER BY
 
 Patient involvement (surveys completed) have been generally low throughout the years the survey was conducted. National average response rate has been decreasing year by year by aproximately one percent yearly from 27.6% in 2015 to 19.4% in 2023. In a state level, we will also find a low average patient involvement for all combined years the survey was conducted, having Wisconsin with the highest involvement average at 33.8% and 41 out of the 51 states below 25% patient involvement. In tearm of decreasing average response throughout the years the survey was conducted Utah has the shapest decrease going from 33% average involvment in 2015 to 18.9% in 2023, that is a 15% decrease throughout the 9 years the surevey has been conducted. A already low decreasing response rate doesn't provide enough data to allow us to see a fuller picture. Therefore, the recomendation in this case would be finding ways to improve patient involvement in order to gather more data and consequently have a more accurate picture on what needs to be improve for better patient quality of care.
 
-**What are the measures with the lowest improvement over the years surveyed and in what specific states/region?**
+**What are the measures with the lowest performance over the years surveyed and in what specific states/region?**
 
-There is a total of 10 measures/areas measuared in the survey. To find any information regarding measure performance in a nation level we need to join the measures table with the national results table. First, to get a general idas of measure performance we will find the average for each measure throughout the years the survey has been conducted by createing a query using a Common Table Expression.
+There is a total of 10 measures/areas measuared in the survey. The grading choices given to patients to reflect their sentiment about the quality of sevice for each of the questions were: "sometimes or never", "usually", and "always" meaning less positive, intermediate, and most positive respectively. 
+
+To find any information regarding measure performance in a nation level we need to join the measures table with the national results table. First, to have a general idas of measure performance we will find the average for each measure throughout the years the survey has been conducted by createing a query using a Common Table Expression.
 ```sql
 WITH
   measures_results AS (
@@ -157,6 +159,7 @@ FROM
 GROUP BY
   measure
 ```
+The two areas with the lowest average performance over the years surveyed are "Comunication about Medicines" and "Discharge Information" with 13.3% and 17.8% of patient less positive sentiment. Ironically, at the same time "Discharge Information" has the highest average patient most positive sentiment percentage along with "Communication with Doctors" with a 86.7% and 81.3% respectivaly. Seems like there is not middle ground when it comes to "Discharge Information" patients either approve or disaprove this area measured. 
 
 
 
