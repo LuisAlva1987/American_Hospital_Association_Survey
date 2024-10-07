@@ -1,9 +1,10 @@
+## Summary
+
 American Hospital Association (AHA) is a national organization that represents hospitals and their patients, and acts as a source of information on health care issues and trends. Each year AHA produces the Hospital Consumer Assessment of Healthcare Providers and Systems (HCAHPS) survey. The intent of the HCAHPS survey is to provide an instrument for measuring patients’ perspectives on hospital care in order to create incentives for hospitals to improve their quality of care. 
 
 The purpose of this project is to analyze the survey data for the last 9 years (2015 through 2023) using SQL to answer the following questions aiming to 
-provide recomendations to improve their quality of care. 
+provide recomendations to improve their quality of care:
 
-### Hospital Performance
 * Has the volume of hospital participation increase or decrease over the years?
 * What is the current state of patient involvement (surveys completed by patients in hospitals)? What recommendations can you make to have a better sense of what needs to be further improve on patient care?
 * What are the measures with the lowest improvement over the years surveyed and in what specific states/region?
