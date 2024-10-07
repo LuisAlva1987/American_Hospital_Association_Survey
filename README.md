@@ -7,7 +7,7 @@ provide recomendations to improve their quality of care.
 
 ### Hospital Performance
 * Has the volume of hospital participation increase or decrease over the years?
-* What is the current state of patient involvement (surveys completed by patients in hospitals) increase or decreased over the years? What recommendations can you make to have a better sense of what needs to be furtherer improve on patient care?
+* What is the current state of patient involvement (surveys completed by patients in hospitals)? What recommendations can you make to have a better sense of what needs to be further improve on patient care?
 * What recommendations can you make to hospitals to help them further improve the patient experience?
 * Have hospitals' HCAHPS scores improved over the past 9 years?
 
@@ -76,7 +76,7 @@ We can also create a query to find average hospitals particpation during the yea
 
 Overall, the volume of hospital participation has stay steady over the last 9 years the survey was condusted. Year 2019 was the year with most hospital participation with 4,895 hospitals while 2016 had the least hospital participation with 4,628 hospitals. That is a difference of 219 hospitals between these two years, which shows that there hasn't been any sharp decreases or increases in participation. The average hospitals participation during the years surveyed is 4,802. Only three of the surveyed years (2015, 2016, and 2018) were below the average participation while most of the recent years surveyed (last six years) were above average hospital participation. This fact signs a tendency of participation increase over the years. 
 
-**What is the current state of patient involvement (surveys completed by patients in hospitals) increase or decreased over the years? What recommendations can you make to have a better sense of what needs to be furtherer improve on patient care?**
+**What is the current state of patient involvement (surveys completed by patients in hospitals)? What recommendations can you make to have a better sense of what needs to be further improve on patient care?**
 
 To get a sense of patient involvement over the years the survey was conducted, we can get the average response rate for each year. 
 
