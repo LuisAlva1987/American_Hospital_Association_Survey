@@ -77,26 +77,26 @@ We can also create a query to find average hospitals particpation during the yea
 
 Overall, the volume of hospital participation has stay steady over the last 9 years the survey was condusted. Year 2019 was the year with most hospital participation with 4,895 hospitals while 2016 had the least hospital participation with 4,628 hospitals. That is a difference of 219 hospitals between these two years, which shows that there hasn't been any sharp decreases or increases in participation. The average hospitals participation during the years surveyed is 4,802. Only three of the surveyed years (2015, 2016, and 2018) were below the average participation while most of the recent years surveyed (last six years) were above average hospital participation. This fact signs a tendency of participation increase over the years. 
 
-**Has the volume of patient involvement (surveys completed by patients in hospitals) increase or decreased over the years?**
+**Has the volume of patient involvement (surveys completed by patients in hospitals) increase or decreased over the years? What recommendations can you make to help achieve a better sense of what needs to be furtherer improve on patient care?**
 
 To get a sense of patient involvement over the years the survey was conducted, we can get the average response rate for each year. 
 
   ```sql
-  SELECT
-    release_period,
-    AVG(response_rate) AS avg_response_rate
-  FROM
-    luisalva.hopitals_patients_survey.responses
-  GROUP BY
-    release_period
-  ORDER BY
-    release_period DESC;
+SELECT
+  release_period,
+  ROUND(AVG(response_rate), 1) AS avg_response_rate
+FROM
+  luisalva.hopitals_patients_survey.responses
+GROUP BY
+  release_period
+ORDER BY 
+  release_period desc;
   ```
 To get a better sense of where exactly there is less patient involvement over the years the survey was conducted we will run a query to get the average response rate by state.
 ```sql
 SELECT
   state,
-  ROUND(AVG(PARSE_NUMERIC(response_rate)), 2) AS avg_response_rate
+  ROUND(AVG(response_rate), 1) AS avg_response_rate
 FROM
   luisalva.hopitals_patients_survey.responses
 GROUP BY
@@ -105,11 +105,7 @@ ORDER BY
   avg_response_rate;
 ```
 
-Average response (surveys completed by patients in hospitals) has been generally low throughout the years the survey was conducted with the highest average response rate of 27.55% during the year 2015. Average response rate has been decreasing year by year by aproximately one percent yearly. 
-A decreasing response rate from an already low response rate doesn't favor the purpose of the survey since it is not proving a complete picture for measuring patients’ perspectives in order to improve their quality of care. 
-Therefore my recomendation is to find ways to i prove survey response rate in hospitals to get a more accurtate picture of the issues.
-
-**What recommendations can you make to hospitals to help them further improve the patient experience?**
+Patient involvement (surveys completed) have been generally low throughout the years the survey was conducted. Average response rate has been decreasing year by year by aproximately one percent yearly from 27.6% in 2015 to 19.4% in 2023. In a state level we will find a low average patient involvement throughout the years the survey was conducted as well, having Wisconsin with the highest involvement average at 33.8% and 41 out of the 51 states below 25% patient involvement. A already low decreasing response rate doesn't provide enough data to allow us to see a fuller picture. Therefore, the recomendation in this case would be finding ways to improve patient involvement in order to gather more data and consequently have a more accurate picture on what needs to be improve for better patient quality of care.
 
 
 
