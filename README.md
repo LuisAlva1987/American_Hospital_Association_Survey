@@ -140,9 +140,9 @@ WITH
     r.release_period,
     r.measure_id,
     m.measure,
-    r.bottom_box_percentage,
-    r.middle_box_percentage,
-    r.top_box_percentage
+    r.bottom_box_percentage AS less_positive_percent,
+    r.middle_box_percentage AS intermediate_percent,
+    r.top_box_percentage AS most_positive_percent
   FROM
     luisalva.hopitals_patients_survey.national_results r
   JOIN
@@ -151,15 +151,15 @@ WITH
     r.measure_id = m.measure_id)
 SELECT
   measure,
-  ROUND(AVG(bottom_box_percentage), 1) AS sometimes_never,
-  ROUND(AVG(middle_box_percentage), 1) AS usually,
-  ROUND(AVG(top_box_percentage), 1) AS always,
+  ROUND(AVG(less_positive_percent), 1) AS less_positive_avg_percent,
+  ROUND(AVG(intermediate_percent), 1) AS intermediate_avg_percent,
+  ROUND(AVG(most_positive_percent), 1) AS most_positive_avg_percent,
 FROM
   measures_results
 GROUP BY
   measure
 ```
-The two areas with the lowest average performance over the years surveyed are "Comunication about Medicines" and "Discharge Information" with 13.3% and 17.8% of patient less positive sentiment. Ironically, at the same time "Discharge Information" has the highest average patient most positive sentiment percentage along with "Communication with Doctors" with a 86.7% and 81.3% respectivaly. Seems like there is not middle ground when it comes to "Discharge Information" patients either approve or disaprove this area measured. 
+The two areas with the lowest average performance over the years surveyed are "Comunication about Medicines" and "Discharge Information" with 13.3% and 17.8% of patient less positive sentiment. Ironically, at the same time "Discharge Information" has the highest average patient most positive sentiment percentage along with "Communication with Doctors" with a 86.7% and 81.3% respectively. Seems like there is not middle ground when it comes to "Discharge Information" patients either approve or disaprove this area measured. 
 
 
 
