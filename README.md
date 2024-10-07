@@ -77,22 +77,39 @@ We can also create a query to find average hospitals particpation during the yea
 
 Overall, the volume of hospital participation has stay steady over the last 9 years the survey was condusted. Year 2019 was the year with most hospital participation with 4,895 hospitals while 2016 had the least hospital participation with 4,628 hospitals. That is a difference of 219 hospitals between these two years, which shows that there hasn't been any sharp decreases or increases in participation. The average hospitals participation during the years surveyed is 4,802. Only three of the surveyed years (2015, 2016, and 2018) were below the average participation while most of the recent years surveyed (last six years) were above average hospital participation. This fact signs a tendency of participation increase over the years. 
 
+**Has the volume of patient involvement (surveys completed by patients in hospitals) increase or decreased over the years?**
 
-**What recommendations can you make to hospitals to help them further improve the patient experience?**
+To get a sense of patient involvement over the years the survey was conducted, we can get the average response rate for each year. 
 
-Average response rate has been decreasing years by year. Improve survey response rate in hospitals to get a better, more data about the issues.
   ```sql
   SELECT
     release_period,
-    AVG(response_rate)
+    AVG(response_rate) AS avg_response_rate
   FROM
     luisalva.hopitals_patients_survey.responses
   GROUP BY
     release_period
   ORDER BY
-    release_period DESC
+    release_period DESC;
   ```
+To get a better sense of where exactly there is less patient involvement over the years the survey was conducted we will run a query to get the average response rate by state.
+```sql
+SELECT
+  state,
+  ROUND(AVG(PARSE_NUMERIC(response_rate)), 2) AS avg_response_rate
+FROM
+  luisalva.hopitals_patients_survey.responses
+GROUP BY
+  state
+ORDER BY 
+  avg_response_rate;
+```
 
+Average response (surveys completed by patients in hospitals) has been generally low throughout the years the survey was conducted with the highest average response rate of 27.55% during the year 2015. Average response rate has been decreasing year by year by aproximately one percent yearly. 
+A decreasing response rate from an already low response rate doesn't favor the purpose of the survey since it is not proving a complete picture for measuring patients’ perspectives in order to improve their quality of care. 
+Therefore my recomendation is to find ways to i prove survey response rate in hospitals to get a more accurtate picture of the issues.
+
+**What recommendations can you make to hospitals to help them further improve the patient experience?**
 
 
 
