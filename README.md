@@ -8,22 +8,18 @@ provide recomendations to improve their quality of care.
 ### Hospital Performance
 * Has the volume of hospital participation increase or decrease over the years?
 * What is the current state of patient involvement (surveys completed by patients in hospitals)? What recommendations can you make to have a better sense of what needs to be further improve on patient care?
+* Overall, what are the measures with the lowest improved and in what specific states and region?
+* What measures have the highest and lowest improvement over the years the survey has been conducted (year by year)?
+* What do patients in each region think of the patient care? Is there a patterns? What is the sentiment on people care on each region?
+* What areas measured received the worst and best results in the lastest released survey nationally? How much have they improved or declined? 
 * What recommendations can you make to hospitals to help them further improve the patient experience?
 * Have hospitals' HCAHPS scores improved over the past 9 years?
+* What areas measured received the worst and best results in the lastest released survey nationally? How much have they improved or declined? 
 
-### State Performance
-* What state has the highest average response rate all years combined? What state has the lowest?
-* What states have the highest average response rate for each survey year?
-* What states had the most complited surveys?
-* What state has the best response rate?
-* What state has the worst average and the best average
 
-### Area/Measure Performance
-* How many areas are measured in the survey?
-* What areas measured received the worst and best results in the lastest released survey nationally?
-* what area/measure had the lowest average for all surveys?
-* Are there any specific areas where hospitals have made more progress than others?
-* All areas received an average of ##% poor rating which is good to start with. 
+
+
+
 
 ## About the Data
 
@@ -41,8 +37,6 @@ The following is the entity relationship diagram that shows each how these table
 
 
 ## Questions
-
-### Hospital Performance
 
 **Has the volume of hospital participation increase or decrease over the years?**
 
@@ -74,11 +68,11 @@ We can also create a query to find average hospitals particpation during the yea
   FROM hospitals;
   ```
 
-Overall, the volume of hospital participation has stay steady over the last 9 years the survey was condusted. Year 2019 was the year with most hospital participation with 4,895 hospitals while 2016 had the least hospital participation with 4,628 hospitals. That is a difference of 219 hospitals between these two years, which shows that there hasn't been any sharp decreases or increases in participation. The average hospitals participation during the years surveyed is 4,802. Only three of the surveyed years (2015, 2016, and 2018) were below the average participation while most of the recent years surveyed (last six years) were above average hospital participation. This fact signs a tendency of participation increase over the years. 
+Overall, the volume of hospital participation has stay steady over the last 9 years the survey has been conducted. Year 2019 was the year with most hospital participation with 4,895 hospitals while 2016 had the least hospital participation with 4,628 hospitals. That is a difference of 219 hospitals between these two years, which shows that there hasn't been any sharp decreases or increases in participation. The average hospitals participation during the years surveyed is 4,802. Only three of the surveyed years (2015, 2016, and 2018) were below the average participation while most of the recent years surveyed (last six years) were above average hospital participation. This fact signs a tendency of participation increase over the years. 
 
 **What is the current state of patient involvement (surveys completed by patients in hospitals)? What recommendations can you make to have a better sense of what needs to be further improve on patient care?**
 
-To get a sense of patient involvement over the years the survey was conducted, we can get the average response rate for each year. 
+To get a sense of patient involvement over the years the survey was conducted we can get the average response rate for each year. 
 
   ```sql
 SELECT
@@ -103,113 +97,42 @@ GROUP BY
 ORDER BY 
   avg_response_rate;
 ```
+To get more indepth, we can run a query using a Common Table Expression with a windown function to understand what state had the highest decreased in response rate over the years the surevey has been conducted.
+```sql
+WITH
+  response_average AS (
+  SELECT
+    state,
+    release_period,
+    ROUND(AVG(response_rate), 1) AS avg_response_rate
+  FROM
+    luisalva.hopitals_patients_survey.responses
+  GROUP BY
+    state,
+    release_period
+  ORDER BY
+    state,
+    release_period),
+
+  year_difference AS (
+  SELECT
+    state,
+    release_period,
+    avg_response_rate,
+    LAG(avg_response_rate) OVER (PARTITION BY state ORDER BY release_period) - avg_response_rate AS diff_from_last_year
+  FROM
+    response_average
+  WHERE
+    release_period IN ('07_2015',
+      '07_2023'))
+
+SELECT
+  *
+FROM
+  year_difference
+ORDER BY
+  diff_from_last_year DESC
+```
 
 Patient involvement (surveys completed) have been generally low throughout the years the survey was conducted. Average response rate has been decreasing year by year by aproximately one percent yearly from 27.6% in 2015 to 19.4% in 2023. In a state level we will find a low average patient involvement throughout the years the survey was conducted as well, having Wisconsin with the highest involvement average at 33.8% and 41 out of the 51 states below 25% patient involvement. A already low decreasing response rate doesn't provide enough data to allow us to see a fuller picture. Therefore, the recomendation in this case would be finding ways to improve patient involvement in order to gather more data and consequently have a more accurate picture on what needs to be improve for better patient quality of care.
 
-
-
-
-1. How many areas are measured in the survey?
-   ```sql
-   SELECT
-     DISTINCT measure AS area_measured
-   FROM
-     luisalva.hopitals_patients_survey.measures
-   ```
-
-2. How hospitals participation has been performing
-  
-  
-3. What was the year where most hospitals participated in the survey?
-   ```sql
-   SELECT
-     release_period,
-     COUNT(facility_id) facility_count
-   FROM
-     luisalva.hopitals_patients_survey.responses
-   GROUP BY
-     release_period
-   ORDER BY
-     facility_count desc;
-   ```
-
-4. What state has the highest average response rate all years combined? What state has the lowest?
-   ```sql
-   SELECT
-     state,
-     ROUND(AVG(response_rate), 2) AS response_rate
-   FROM
-     luisalva.hopitals_patients_survey.responses
-   GROUP BY
-     state
-   ORDER BY
-     response_rate DESC;
-   ```
-5. What states have the highest average response rate for each survey year?
-   ```sql
-   WITH
-     FIRST AS (
-   SELECT
-     state,
-     release_period,
-     ROUND(AVG(CAST(response_rate AS int)), 2) AS avg_response_rate
-   FROM
-     luisalva.hopitals_patients_survey.responses
-   GROUP BY
-     state,
-     release_period
-   ORDER BY
-     state,
-     release_period)
-   
-   SELECT
-     f.state,
-     f.release_period,
-     f.avg_response_rate
-   FROM
-     FIRST f
-   INNER JOIN (
-     SELECT
-       release_period,
-       MAX(avg_response_rate) AS max_avg_response_rate
-     FROM
-       FIRST
-     GROUP BY
-       release_period) AS fi
-   ON
-     f.avg_response_rate = fi.max_avg_response_rate
-   ORDER BY
-     release_period DESC;
-   ```
-
-6. What areas measured received the worst and best results in the lastest released survey nationally? 
-   ```sql
-   SELECT
-     nr.release_period,
-     m.measure AS area_measured,
-     nr.bottom_box_percentage AS poor,
-     nr.middle_box_percentage AS fair,
-     nr.top_box_percentage AS good
-   FROM
-     luisalva.hopitals_patients_survey.measures m
-   JOIN
-     luisalva.hopitals_patients_survey.national_results nr
-   ON
-     m.measure_id = nr.measure_id
-   JOIN
-     luisalva.hopitals_patients_survey.reports r
-   ON
-     nr.release_period = r.release_period
-   WHERE
-     nr.release_period = '07_2023'
-   ORDER BY
-     nr.release_period;
-   ```
-
-try some feature engeenering maybe
-investigate window functions
-
-dividelo by hospital performance. 
-            state performance. 
-            measures/areas performance.
-            
