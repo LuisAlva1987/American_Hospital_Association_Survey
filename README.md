@@ -8,18 +8,11 @@ provide recomendations to improve their quality of care.
 ### Hospital Performance
 * Has the volume of hospital participation increase or decrease over the years?
 * What is the current state of patient involvement (surveys completed by patients in hospitals)? What recommendations can you make to have a better sense of what needs to be further improve on patient care?
-* Overall, what are the measures with the lowest improved and in what specific states and region?
-* What measures have the highest and lowest improvement over the years the survey has been conducted (year by year)?
-* What do patients in each region think of the patient care? Is there a patterns? What is the sentiment on people care on each region?
+* What are the measures with the lowest improvement over the years surveyed and in what specific states/region?
+* What is the sentiment on patient care on each region? Are there any patterns?
 * What areas measured received the worst and best results in the lastest released survey nationally? How much have they improved or declined? 
-* What recommendations can you make to hospitals to help them further improve the patient experience?
-* Have hospitals' HCAHPS scores improved over the past 9 years?
-* What areas measured received the worst and best results in the lastest released survey nationally? How much have they improved or declined? 
-
-
-
-
-
+* Have hospitals' HCAHPS scores improved over the past 9 years? What is the tendency?
+* Based on the researched data, what recommendations can you make to hospitals to help them further improve the patient experience?
 
 ## About the Data
 
