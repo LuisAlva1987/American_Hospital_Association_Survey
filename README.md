@@ -126,5 +126,37 @@ ORDER BY
   diff_from_last_year DESC
 ```
 
-Patient involvement (surveys completed) have been generally low throughout the years the survey was conducted. Average response rate has been decreasing year by year by aproximately one percent yearly from 27.6% in 2015 to 19.4% in 2023. In a state level we will find a low average patient involvement throughout the years the survey was conducted as well, having Wisconsin with the highest involvement average at 33.8% and 41 out of the 51 states below 25% patient involvement. A already low decreasing response rate doesn't provide enough data to allow us to see a fuller picture. Therefore, the recomendation in this case would be finding ways to improve patient involvement in order to gather more data and consequently have a more accurate picture on what needs to be improve for better patient quality of care.
+Patient involvement (surveys completed) have been generally low throughout the years the survey was conducted. National average response rate has been decreasing year by year by aproximately one percent yearly from 27.6% in 2015 to 19.4% in 2023. In a state level, we will also find a low average patient involvement for all combined years the survey was conducted, having Wisconsin with the highest involvement average at 33.8% and 41 out of the 51 states below 25% patient involvement. In tearm of decreasing average response throughout the years the survey was conducted Utah has the shapest decrease going from 33% average involvment in 2015 to 18.9% in 2023, that is a 15% decrease throughout the 9 years the surevey has been conducted. A already low decreasing response rate doesn't provide enough data to allow us to see a fuller picture. Therefore, the recomendation in this case would be finding ways to improve patient involvement in order to gather more data and consequently have a more accurate picture on what needs to be improve for better patient quality of care.
+
+**What are the measures with the lowest improvement over the years surveyed and in what specific states/region?**
+
+There is a total of 10 measures/areas measuared in the survey. To find any information regarding measure performance in a nation level we need to join the measures table with the national results table. First, to get a general idas of measure performance we will find the average for each measure throughout the years the survey has been conducted by createing a query using a Common Table Expression.
+```sql
+WITH
+  measures_results AS (
+  SELECT
+    r.release_period,
+    r.measure_id,
+    m.measure,
+    r.bottom_box_percentage,
+    r.middle_box_percentage,
+    r.top_box_percentage
+  FROM
+    luisalva.hopitals_patients_survey.national_results r
+  JOIN
+    luisalva.hopitals_patients_survey.measures m
+  ON
+    r.measure_id = m.measure_id)
+SELECT
+  measure,
+  ROUND(AVG(bottom_box_percentage), 1) AS sometimes_never,
+  ROUND(AVG(middle_box_percentage), 1) AS usually,
+  ROUND(AVG(top_box_percentage), 1) AS always,
+FROM
+  measures_results
+GROUP BY
+  measure
+```
+
+
 
