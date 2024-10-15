@@ -250,4 +250,7 @@ ORDER BY
 ```
 There are a few states where areas most positive sentiment have significant significantly from 2015 to 2023. In North Dakota, "Quietness of Hospital Environment" has increased 7% since 2015. In Alaska, most positive sentiment in the areas of "Communication with Nurses", "Cleanliness of Hospital Environment", and "Overall Hospital Rating" have increased 6% each. We can see that in the state level some areas most positive sentiment have increased in comparison to the national level where there was no increased in areas most positive sentiment. 
 
+**What is the patient care sentiment on each region? Are there any patterns?**
+For the purpose of this survey the country has been devided between nine distinct regions: 
+
 
