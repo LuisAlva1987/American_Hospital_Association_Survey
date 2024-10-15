@@ -8,8 +8,8 @@ provide recomendations to improve their quality of care:
 * Has the volume of hospital participation increase or decrease over the years?
 * What is the current state of patient involvement (surveys completed by patients in hospitals)? 
 * Are there any major areas for opportunity of improvement? What regions in the country are the most impacted?
-* Are there any specific areas where hospitals have made more progress than others?
-* What is the sentiment on patient care on each region? Are there any patterns?
+* What areas have made more progress over the years surveyed? 
+* What is the patient care sentiment on each region? Are there any patterns?
 * Have hospitals' HCAHPS scores improved over the past 9 years? What is the tendency?
 * Based on the researched data, what recommendations can you make to hospitals to help them further improve the patient experience?
 
@@ -188,7 +188,7 @@ ORDER BY
 
 From this query we can see that the regions with the highest disapprovement in the area of "Comunication about Medicines" are the Mid-Atlantic region and the South Atlantics region with 21.1% and 20% of disaprovemment. Regarding the area of "Discharge Information" the two areas with the highest disapprovement ratings are Mid-Atlantic and East South Central with 14.6% and 14.3 respectively.
 
-**Are there any specific areas where hospitals have made more progress than others?**
+*** What areas have made more progress over the years surveyed?**
 
 To identify specific areas where hospitals have made more progress, we have to join the national_results table with the measures table
 and identify the areas where most positive sentiment has increased over the years.
