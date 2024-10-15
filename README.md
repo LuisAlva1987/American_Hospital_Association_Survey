@@ -123,12 +123,12 @@ SELECT
 FROM
   year_difference
 ORDER BY
-  diff_from_last_year DESC
+  diff_from_last_year DESC;
 ```
 
 Patient involvement (surveys completed) have been generally low throughout the years the survey was conducted. National average response rate has been decreasing year by year by aproximately one percent yearly from 27.6% in 2015 to 19.4% in 2023. In a state level, we will also find a low average patient involvement for all combined years the survey was conducted, having Wisconsin with the highest involvement average at 33.8% and 41 out of the 51 states below 25% patient involvement. In tearm of decreasing average response throughout the years the survey was conducted Utah has the shapest decrease going from 33% average involvment in 2015 to 18.9% in 2023, that is a 15% decrease throughout the 9 years the surevey has been conducted. A already low decreasing response rate doesn't provide enough data to allow us to see a fuller picture. Therefore, the recomendation in this case would be finding ways to improve patient involvement in order to gather more data and consequently have a more accurate picture on what needs to be improve for better patient quality of care.
 
-*** Are there any major areas for opportunity of improvement?? and what specific region are the most impacted?**
+**Are there any major areas for opportunity of improvement?? and what specific region are the most impacted?**
 
 There is a total of 10 areas measuared in the survey. The grading choices given to patients to reflect their sentiment about the quality of sevice for each of the questions were: "sometimes or never", "usually", and "always" meaning less positive, intermediate, and most positive respectively. 
 
@@ -158,7 +158,7 @@ SELECT
 FROM
   measures_results
 GROUP BY
-  measure
+  measure;
 ```
 The two areas with the lowest average performance for all years surveyed combined, therefore, the major areas for opportunity of improvement are "Comunication about Medicines" and "Discharge Information" with 13.3% and 17.8% of patient less positive sentiment.
 
@@ -183,11 +183,67 @@ GROUP BY
   s.region,
   m.measure
 ORDER BY
-  region_percentage DESC
+  region_percentage DESC;
 ```
 
 From this query we can see that the regions with the highest disapprovement in the area of "Comunication about Medicines" are the Mid-Atlantic region and the South Atlantics region with 21.1% and 20% of disaprovemment. Regarding the area of "Discharge Information" the two areas with the highest disapprovement ratings are Mid-Atlantic and East South Central with 14.6% and 14.3 respectively.
 
+**Are there any specific areas where hospitals have made more progress than others?**
 
+To identify specific areas where hospitals have made more progress, we have to join the national_results table with the measures table
+and identify the areas where most positive sentiment has increased over the years.
+
+```sql
+SELECT
+  r.release_period,
+  m.measure,
+  r.top_box_percentage AS most_positive,
+  r.top_box_percentage - LAG(r.top_box_percentage) OVER (PARTITION BY m.measure ORDER BY r.release_period) AS percent_difference
+FROM
+  luisalva.hopitals_patients_survey.national_results r
+JOIN
+  luisalva.hopitals_patients_survey.measures m
+ON
+  r.measure_id = m.measure_id
+WHERE
+  r.release_period IN ('07_2015',
+    '07_2023')
+ORDER BY
+  m.measure,
+  r.release_period DESC;
+```
+From this query we can see that none of the areas have increased for the most positive sentiment over the years. Most of the areas if anything have decreased their most positive sentiment. 
+
+To see eexplore this question into more detail I would like to know if there are any states where areas most positive sentiment have increased over the years surveyed. 
+```sql
+WITH
+  state_measure AS (
+  SELECT
+    r.release_period,
+    r.State,
+    m.measure,
+    r.top_box_percentage AS most_positive,
+    r.top_box_percentage - LAG(r.top_box_percentage) OVER (PARTITION BY m.measure, state ORDER BY r.release_period) AS percent_difference
+  FROM
+    luisalva.hopitals_patients_survey.state_results r
+  JOIN
+    luisalva.hopitals_patients_survey.measures m
+  ON
+    r.measure_id = m.measure_id
+  WHERE
+    release_period IN ('07_2015',
+      '07_2023')
+  ORDER BY
+    State,
+    measure,
+    release_period DESC)
+SELECT
+  *
+FROM
+  state_measure
+ORDER BY
+  percent_difference desc;
+```
+There are a few states where areas most positive sentiment have significant significantly from 2015 to 2023. In North Dakota, "Quietness of Hospital Environment" has increased 7% since 2015. In Alaska, most positive sentiment in the areas of "Communication with Nurses", "Cleanliness of Hospital Environment", and "Overall Hospital Rating" have increased 6% each. We can see that in the state level some areas most positive sentiment have increased in comparison to the national level where there was no increased in areas most positive sentiment. 
 
 
