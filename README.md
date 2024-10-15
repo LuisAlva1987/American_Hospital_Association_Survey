@@ -13,6 +13,10 @@ provide recomendations to improve their quality of care:
 * Have hospitals' HCAHPS scores improved over the past 9 years? What is the tendency?
 * Based on the researched data, what recommendations can you make to hospitals to help them further improve the patient experience?
 
+## Survey Methodology
+How many areas are survey
+what does less_positive_percent, intermediate, and most_positive represent?
+
 ## About the Data
 
 The HCAHPS survey data base contains seven tables:
