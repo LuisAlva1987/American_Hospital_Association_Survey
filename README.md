@@ -6,11 +6,9 @@ The purpose of this project is to analyze the survey data for the last 9 years (
 provide recomendations to improve their quality of care:
 
 * Has the volume of hospital participation increase or decrease over the years?
-* What is the current state of patient involvement (surveys completed by patients in hospitals)? What recommendations can you make to have a better sense of what needs to be further improve on patient care?
-* Are there any major areas for opportunity of improvement?? and what specific region are the most impacted?
-
+* What is the current state of patient involvement (surveys completed by patients in hospitals)? 
+* Are there any major areas for opportunity of improvement? What regions in the country are the most impacted?
 * Are there any specific areas where hospitals have made more progress than others?
-
 * What is the sentiment on patient care on each region? Are there any patterns?
 * Have hospitals' HCAHPS scores improved over the past 9 years? What is the tendency?
 * Based on the researched data, what recommendations can you make to hospitals to help them further improve the patient experience?
