@@ -251,6 +251,78 @@ ORDER BY
 There are a few states where areas most positive sentiment have significant significantly from 2015 to 2023. In North Dakota, "Quietness of Hospital Environment" has increased 7% since 2015. In Alaska, most positive sentiment in the areas of "Communication with Nurses", "Cleanliness of Hospital Environment", and "Overall Hospital Rating" have increased 6% each. We can see that in the state level some areas most positive sentiment have increased in comparison to the national level where there was no increased in areas most positive sentiment. 
 
 **What is the patient care sentiment on each region? Are there any patterns?**
-For the purpose of this survey the country has been devided between nine distinct regions: 
+
+For the purpose of this survey the country has been devided in nine distinct regions. Each region divided by a groupo of states according to state locations. The nine regions are: Pacific, Mountain, New England,
+Mid-Atlantic, South Atlantic, East North Central, East South Central, West North Central, and West South Central. 
+Since survey results are only provided in a state level, region results will have to be based on the average results of the states that belongs to each region. To identify the average region results, first, I joined three tables state_results, meausres, and states. This allowed me to see the areas measure, results(sentiment), state, and the region the states belongs to. 
+```sql
+SELECT
+  r.release_period,
+  s.state,
+  s.region,
+  m.measure,
+  r.bottom_box_percentage,
+  r.middle_box_percentage,
+  r.top_box_percentage
+FROM
+  luisalva.hopitals_patients_survey.state_results r
+JOIN
+  luisalva.hopitals_patients_survey.measures m
+ON
+  r.measure_id = m.measure_id
+JOIN
+  luisalva.hopitals_patients_survey.states s
+ON
+  r.State = s.state
+ORDER BY
+  region,
+  release_period;
+```
+Next, I proceeded to find the average results for each region by turning the previous query into a common table expression and adding a query. 
+```sql
+WITH
+  average_region AS (
+  SELECT
+    r.release_period,
+    s.state,
+    s.region,
+    m.measure,
+    r.bottom_box_percentage AS negative,
+    r.middle_box_percentage AS neutral,
+    r.top_box_percentage AS positive
+  FROM
+    luisalva.hopitals_patients_survey.state_results r
+  JOIN
+    luisalva.hopitals_patients_survey.measures m
+  ON
+    r.measure_id = m.measure_id
+  JOIN
+    luisalva.hopitals_patients_survey.states s
+  ON
+    r.State = s.state
+  ORDER BY
+    region,
+    release_period)
+SELECT
+  region,
+  measure,
+  ROUND(AVG(negative), 1) AS negative_avg,
+  ROUND(AVG(neutral), 1) AS neutral_avg,
+  ROUND(AVG(positive), 1) AS positive_avg
+FROM
+  average_region
+GROUP BY
+  region,
+  measure
+ORDER BY
+  region,
+  measure;
+```
+
+
+
+
+
+
 
 
